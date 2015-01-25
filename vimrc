@@ -5,12 +5,12 @@ call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
+Bundle 'itchyny/lightline.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'jelera/vim-javascript-syntax'
-Plugin 'Shougo/neocomplete.vim'
+Bundle 'Shougo/neocomplete.vim'
 
 call vundle#end()
 
@@ -34,6 +34,7 @@ set nopaste
 set splitbelow
 set splitright
 set listchars=tab:▸\ ,eol:¬
+
 colorscheme solarized
 
 set nobackup
@@ -46,7 +47,7 @@ set guioptions-=t  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L
 
-set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
+set guifont=Inconsolata\ Medium\ 12
 
 nnoremap <S-h> :MBEbf<CR>
 nnoremap <S-l> :MBEbb<CR>
@@ -61,8 +62,7 @@ nnoremap } :cn<CR>
 
 let NERDTreeMinimalUI=1
 
-let g:airline_powerline_fonts=1
-let g:airline#extensions#whitespace#enabled=0
+let g:lightline = { 'colorscheme': 'solarized' }
 
 let g:miniBufExplVSplit=20
 let g:miniBufExplBRSplit=1
