@@ -16,6 +16,10 @@ call vundle#end()
 
 syn on
 filetype plugin on
+
+set ttyfast
+set lazyredraw
+
 set bs=2
 set tabstop=4
 set softtabstop=4
@@ -34,6 +38,7 @@ set nopaste
 set splitbelow
 set splitright
 set listchars=tab:▸\ ,eol:¬
+set wildmode=list:longest
 
 colorscheme solarized
 
