@@ -14,6 +14,8 @@ Bundle 'Shougo/neocomplete.vim'
 
 call vundle#end()
 
+set t_cl=
+
 syn on
 filetype plugin on
 
