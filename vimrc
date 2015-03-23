@@ -11,6 +11,7 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'Shougo/neocomplete.vim'
+Bundle 'evidens/vim-twig'
 
 call vundle#end()
 
