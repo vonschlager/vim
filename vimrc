@@ -42,6 +42,7 @@ set splitbelow
 set splitright
 set listchars=tab:▸\ ,eol:¬
 set wildmode=list:longest
+set tags=tags
 
 colorscheme solarized
 
