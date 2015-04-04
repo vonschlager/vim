@@ -23,11 +23,11 @@ filetype plugin on
 set ttyfast
 set lazyredraw
 
-set bs=2
+set backspace=2
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set ls=2
+set laststatus=2
 set ttimeoutlen=50
 set noshowmode
 set fileencodings=utf8,iso-8859-2
