@@ -12,6 +12,9 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'evidens/vim-twig'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-unimpaired'
 
 call vundle#end()
 
@@ -66,12 +69,14 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
-nnoremap { :cp<CR>
-nnoremap } :cn<CR>
-
 let NERDTreeMinimalUI=1
 
-let g:lightline = { 'colorscheme': 'solarized' }
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'active': { 'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ] },
+    \ 'component_expand': { 'syntastic': 'SyntasticStatuslineFlag' },
+    \ 'component_type': { 'syntastic': 'error' },
+    \ }
 
 let g:miniBufExplVSplit=20
 let g:miniBufExplBRSplit=1
@@ -100,3 +105,13 @@ map \0 :buffer 10<CR>
 
 vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>
 vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
