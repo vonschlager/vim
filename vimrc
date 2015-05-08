@@ -3,18 +3,19 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'gmarik/Vundle.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'itchyny/lightline.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'Shougo/neocomplete.vim'
 Bundle 'eagletmt/neco-ghc'
 Bundle 'evidens/vim-twig'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'gmarik/Vundle.vim'
+Bundle 'itchyny/lightline.vim'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 
 call vundle#end()
