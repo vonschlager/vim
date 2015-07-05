@@ -93,6 +93,12 @@ let g:neocomplete#enable_at_startup=1
 let g:neocomplete#enable_camel_case_completion=1
 let g:neocomplete#enable_underbar_completion=1
 let g:neocomplete#enable_smart_case=1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php='[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.typescript='.*'
+let g:neocomplete#sources#omni#input_patterns.javascript='[^. *\t]\.\w*\|\h\w*::'
 
 let mapleader=','
 map <Leader>m :make<CR>
