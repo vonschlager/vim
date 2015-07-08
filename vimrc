@@ -3,17 +3,22 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'gmarik/Vundle.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'itchyny/lightline.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'fholgado/minibufexpl.vim'
+Bundle 'clausreinke/typescript-tools.vim'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'Shougo/neocomplete.vim'
+Bundle 'eagletmt/neco-ghc'
 Bundle 'evidens/vim-twig'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'gmarik/Vundle.vim'
+Bundle 'itchyny/lightline.vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'leafgarland/typescript-vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 
 call vundle#end()
@@ -27,25 +32,25 @@ set ttyfast
 set lazyredraw
 
 set backspace=2
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set laststatus=2
-set ttimeoutlen=50
-set noshowmode
-set fileencodings=utf8,iso-8859-2
-set expandtab
-set noautochdir
-set bg=dark
+set background=dark
 set cursorline
+set expandtab
+set fileencodings=utf8,iso-8859-2
+set laststatus=2
+set listchars=tab:▸\ ,eol:¬
 set mouse=a
-set number
+set noautochdir
 set nopaste
+set noshowmode
+set number
+set shiftwidth=4
+set softtabstop=4
 set splitbelow
 set splitright
-set listchars=tab:▸\ ,eol:¬
-set wildmode=list:longest
+set tabstop=4
 set tags=tags
+set ttimeoutlen=50
+set wildmode=list:longest
 
 colorscheme solarized
 
@@ -60,6 +65,8 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L
 
 set guifont=Inconsolata\ Medium\ 12
+
+set completeopt+=menu,preview
 
 nnoremap <S-h> :MBEbf<CR>
 nnoremap <S-l> :MBEbb<CR>
@@ -83,6 +90,15 @@ let g:miniBufExplBRSplit=1
 let g:miniBufExplorerAutoStart=0
 
 let g:neocomplete#enable_at_startup=1
+let g:neocomplete#enable_camel_case_completion=1
+let g:neocomplete#enable_underbar_completion=1
+let g:neocomplete#enable_smart_case=1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php='[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.typescript='.*'
+let g:neocomplete#sources#omni#input_patterns.javascript='[^. *\t]\.\w*\|\h\w*::'
 
 let mapleader=','
 map <Leader>m :make<CR>
@@ -111,13 +127,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-"let g:syntastic_disabled_filetypes = ['xml']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:tagbar_type_php  = {
+let g:tagbar_type_php={
     \ 'ctagstype' : 'php',
     \ 'kinds'     : [
         \ 'i:interfaces',
@@ -127,3 +137,12 @@ let g:tagbar_type_php  = {
         \ 'j:javascript functions:1'
     \ ]
   \ }
+
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+"let g:syntastic_disabled_filetypes=['xml']
+
+"typescript
+let g:typescript_indent_disable=1
