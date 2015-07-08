@@ -111,7 +111,19 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+"let g:syntastic_disabled_filetypes = ['xml']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:tagbar_type_php  = {
+    \ 'ctagstype' : 'php',
+    \ 'kinds'     : [
+        \ 'i:interfaces',
+        \ 'c:classes',
+        \ 'd:constant definitions',
+        \ 'f:functions',
+        \ 'j:javascript functions:1'
+    \ ]
+  \ }
