@@ -3,16 +3,18 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'clausreinke/typescript-tools.vim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'evidens/vim-twig'
+Bundle 'airblade/vim-gitgutter'
+"Bundle 'clausreinke/typescript-tools.vim'
+"Bundle 'digitaltoad/vim-jade'
+"Bundle 'eagletmt/neco-ghc'
+"Bundle 'evidens/vim-twig'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'itchyny/lightline.vim'
 Bundle 'jelera/vim-javascript-syntax'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'majutsushi/tagbar'
+Bundle 'kien/ctrlp.vim'
+"Bundle 'leafgarland/typescript-vim'
+"Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -78,13 +80,6 @@ nnoremap <C-l> <C-W>l
 
 let NERDTreeMinimalUI=1
 
-let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ 'active': { 'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ] },
-    \ 'component_expand': { 'syntastic': 'SyntasticStatuslineFlag' },
-    \ 'component_type': { 'syntastic': 'error' },
-    \ }
-
 let g:miniBufExplVSplit=20
 let g:miniBufExplBRSplit=1
 let g:miniBufExplorerAutoStart=0
@@ -146,3 +141,66 @@ let g:syntastic_check_on_wq=0
 
 "typescript
 let g:typescript_indent_disable=1
+
+"lightline
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'mode_map': { 'c': 'NORMAL' },
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \ },
+    \ 'component_expand': { 'syntastic': 'SyntasticStatuslineFlag' },
+    \ 'component_type': { 'syntastic': 'error' },
+    \ 'component_function': {
+    \   'modified': 'MyModified',
+    \   'readonly': 'MyReadonly',
+    \   'fugitive': 'MyFugitive',
+    \   'filename': 'MyFilename',
+    \   'fileformat': 'MyFileformat',
+    \   'filetype': 'MyFiletype',
+    \   'fileencoding': 'MyFileencoding',
+    \   'mode': 'MyMode',
+    \ }
+    \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+        \  &ft == 'unite' ? unite#get_status_string() : 
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '-- '._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
