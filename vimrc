@@ -10,6 +10,7 @@ Bundle 'airblade/vim-gitgutter'
 "Bundle 'evidens/vim-twig'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'gmarik/Vundle.vim'
+Bundle 'godlygeek/tabular'
 Bundle 'itchyny/lightline.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kien/ctrlp.vim'
@@ -22,6 +23,7 @@ Bundle 'Shougo/neocomplete.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'moll/vim-node'
 
 call vundle#end()
 
