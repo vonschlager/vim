@@ -24,6 +24,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'moll/vim-node'
+Bundle 'luochen1990/rainbow'
 
 call vundle#end()
 
@@ -206,3 +207,8 @@ endfunction
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+"CtrlP
+let g:ctrlp_custom_ignore = {
+\ 'dir': '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules$',
+\ }
