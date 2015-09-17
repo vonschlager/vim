@@ -18,13 +18,14 @@ Bundle 'kien/ctrlp.vim'
 "Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'moll/vim-node'
 Bundle 'luochen1990/rainbow'
+Bundle 'joonty/vdebug'
 
 call vundle#end()
 
@@ -212,3 +213,12 @@ endfunction
 let g:ctrlp_custom_ignore = {
 \ 'dir': '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules$',
 \ }
+
+"XDEBUG
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+
+let g:vdebug_options["server"] = "192.168.100.37"
+let g:vdebug_options["path_maps"] = {"/home/jlehmann/DEV/middleware": "/mnt/dev/middleware"}
+let g:vdebug_options["ide_key"] = 'XDEBUG_VIM'
