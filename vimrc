@@ -4,18 +4,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Bundle 'airblade/vim-gitgutter'
-"Bundle 'clausreinke/typescript-tools.vim'
-"Bundle 'digitaltoad/vim-jade'
-"Bundle 'eagletmt/neco-ghc'
-"Bundle 'evidens/vim-twig'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'itchyny/lightline.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'leafgarland/typescript-vim'
-"Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -23,45 +16,46 @@ Bundle 'Shougo/neocomplete.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'moll/vim-node'
+Bundle 'tpope/vim-endwise'
 Bundle 'luochen1990/rainbow'
+Bundle 'slashmili/alchemist.vim'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'tpope/vim-sensible'
 
 call vundle#end()
 
 set t_cl=
 
-syn on
 filetype plugin on
 
 set ttyfast
 set lazyredraw
 
-set backspace=2
 set background=dark
 set cursorline
 set expandtab
 set fileencodings=utf8,iso-8859-2
-set laststatus=2
-set listchars=tab:▸\ ,eol:¬
 set mouse=a
 set noautochdir
 set nopaste
 set noshowmode
 set number
+set relativenumber
 set shiftwidth=4
 set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
-set tags=tags
-set ttimeoutlen=50
-set wildmode=list:longest
+"set wildmode=list:longest
 
 colorscheme solarized
 
 set nobackup
 set nowritebackup
 set noswapfile
+
+set undofile
+set undodir=$HOME/.vim/undo
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -172,7 +166,7 @@ function! MyModified()
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '^' : ''
 endfunction
 
 function! MyFilename()
