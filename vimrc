@@ -6,7 +6,8 @@ call vundle#begin()
 Bundle 'airblade/vim-gitgutter'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'godlygeek/tabular'
-Bundle 'itchyny/lightline.vim'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
@@ -115,9 +116,9 @@ vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>
 vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
 
 "Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:tagbar_type_php={
     \ 'ctagstype' : 'php',
@@ -136,72 +137,6 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 "let g:syntastic_disabled_filetypes=['xml']
 
-"typescript
-let g:typescript_indent_disable=1
-
-"lightline
-let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ 'mode_map': { 'c': 'NORMAL' },
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
-    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-    \ },
-    \ 'component_expand': { 'syntastic': 'SyntasticStatuslineFlag' },
-    \ 'component_type': { 'syntastic': 'error' },
-    \ 'component_function': {
-    \   'modified': 'MyModified',
-    \   'readonly': 'MyReadonly',
-    \   'fugitive': 'MyFugitive',
-    \   'filename': 'MyFilename',
-    \   'fileformat': 'MyFileformat',
-    \   'filetype': 'MyFiletype',
-    \   'fileencoding': 'MyFileencoding',
-    \   'mode': 'MyMode',
-    \ }
-    \ }
-
-function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '^' : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-        \  &ft == 'unite' ? unite#get_status_string() : 
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? '-- '._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
 "CtrlP
 let g:ctrlp_custom_ignore = {
 \ 'dir': '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules$',
@@ -215,3 +150,21 @@ endif
 let g:vdebug_options["server"] = "192.168.100.37"
 let g:vdebug_options["path_maps"] = {"/home/jlehmann/DEV/middleware": "/mnt/dev/middleware"}
 let g:vdebug_options["ide_key"] = 'XDEBUG_VIM'
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = ''
+let g:airline_symbols.whitespace = ''
+let g:airline_symbols.readonly = ''
