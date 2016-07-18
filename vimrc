@@ -20,6 +20,7 @@ Bundle 'luochen1990/rainbow'
 Bundle 'slashmili/alchemist.vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/vim-sensible'
+Bundle 'mileszs/ack.vim'
 
 call vundle#end()
 
