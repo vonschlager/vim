@@ -21,6 +21,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
 
 call vundle#end()
 
@@ -67,8 +68,8 @@ set guifont=Inconsolata\ Medium\ 12
 
 set completeopt+=menu,preview
 
-nnoremap <S-h> :MBEbf<CR>
-nnoremap <S-l> :MBEbb<CR>
+nnoremap <S-h> :bp<CR>
+nnoremap <S-l> :bn<CR>
 
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -114,31 +115,9 @@ map \0 :buffer 10<CR>
 vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>
 vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
 
-"Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-let g:tagbar_type_php={
-    \ 'ctagstype' : 'php',
-    \ 'kinds'     : [
-        \ 'i:interfaces',
-        \ 'c:classes',
-        \ 'd:constant definitions',
-        \ 'f:functions',
-        \ 'j:javascript functions:1'
-    \ ]
-  \ }
-
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-"let g:syntastic_disabled_filetypes=['xml']
-
 "CtrlP
 let g:ctrlp_custom_ignore = {
-\ 'dir': '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules$',
+\ 'dir': '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules$|\v[\/](deps|priv|_build)$',
 \ }
 
 "XDEBUG
@@ -152,3 +131,8 @@ let g:vdebug_options["ide_key"] = 'XDEBUG_VIM'
 
 "Ack
 let g:ackprg = 'ag --vimgrep'
+
+" lightline
+let g:lightline = {
+            \ 'colorscheme': 'solarized'
+            \ }
