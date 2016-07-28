@@ -3,23 +3,24 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'airblade/vim-gitgutter'
-Bundle 'gmarik/Vundle.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'itchyny/lightline.vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-endwise'
-Bundle 'luochen1990/rainbow'
-Bundle 'slashmili/alchemist.vim'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'tpope/vim-sensible'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'itchyny/lightline.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'kien/ctrlp.vim'
+Plugin 'luochen1990/rainbow'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 
@@ -214,3 +215,6 @@ endif
 let g:vdebug_options["server"] = "192.168.100.37"
 let g:vdebug_options["path_maps"] = {"/home/jlehmann/DEV/middleware": "/mnt/dev/middleware"}
 let g:vdebug_options["ide_key"] = 'XDEBUG_VIM'
+
+"Ack
+let g:ackprg = 'ag --vimgrep'
