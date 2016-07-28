@@ -47,6 +47,8 @@ set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
+set foldmethod=indent
+set nofoldenable
 "set wildmode=list:longest
 
 colorscheme solarized
@@ -78,9 +80,7 @@ nnoremap <C-l> <C-W>l
 
 let NERDTreeMinimalUI=1
 
-let g:miniBufExplVSplit=20
-let g:miniBufExplBRSplit=1
-let g:miniBufExplorerAutoStart=0
+let g:acp_enableAtStartup=0
 
 let g:neocomplete#enable_at_startup=1
 let g:neocomplete#enable_camel_case_completion=1
