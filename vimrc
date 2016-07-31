@@ -6,13 +6,16 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'luochen1990/rainbow'
 Plugin 'mileszs/ack.vim'
+Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'slashmili/alchemist.vim'
@@ -22,7 +25,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 
@@ -71,8 +73,8 @@ set guifont=Inconsolata\ Medium\ 12
 
 set completeopt+=menu,preview
 
-nnoremap <S-h> :bp<CR>
-nnoremap <S-l> :bn<CR>
+nnoremap <S-h> :MBEbp<CR>
+nnoremap <S-l> :MBEbn<CR>
 
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -94,24 +96,21 @@ let g:neocomplete#sources#omni#input_patterns.php='[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.typescript='.*'
 let g:neocomplete#sources#omni#input_patterns.javascript='[^. *\t]\.\w*\|\h\w*::'
 
-let mapleader=','
-map <Leader>m :make<CR>
-map <Leader>b :MBEToggle<CR>
-map <Leader>B :MBEToggleMRU<CR>
-map <Leader>w :w<CR>
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
 
-map \q :qall<CR>
-map \p :NERDTreeToggle<CR>
-map \1 :buffer 1<CR>
-map \2 :buffer 2<CR>
-map \3 :buffer 3<CR>
-map \4 :buffer 4<CR>
-map \5 :buffer 5<CR>
-map \6 :buffer 6<CR>
-map \7 :buffer 7<CR>
-map \8 :buffer 8<CR>
-map \9 :buffer 9<CR>
-map \0 :buffer 10<CR>
+let mapleader="\<Space>"
+
+nmap <Leader>w :w<CR>
+nmap <Leader>q :qall<CR>
+nmap <Leader>b :MBEToggle<CR>
+nmap <Leader>t :NERDTreeToggle<CR>
+
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>
 vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
@@ -137,3 +136,8 @@ let g:ackprg = 'ag --vimgrep'
 let g:lightline = {
             \ 'colorscheme': 'solarized'
             \ }
+
+" minibufexpl
+let g:miniBufExplVSplit=20
+let g:miniBufExplorerAutoStart=0
+
