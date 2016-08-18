@@ -15,6 +15,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'luochen1990/rainbow'
 Plugin 'mileszs/ack.vim'
+Plugin 'neovimhaskell/haskell-vim'
 Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
@@ -72,6 +73,8 @@ set guioptions-=L
 set guifont=Inconsolata\ Medium\ 12
 
 set completeopt+=menu,preview
+
+nnoremap Q <nop>
 
 nnoremap <S-h> :MBEbp<CR>
 nnoremap <S-l> :MBEbn<CR>
