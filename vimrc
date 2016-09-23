@@ -1,33 +1,30 @@
-filetype off
+call plug#begin(expand('~/.vim/plugged'))
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'gmarik/Vundle.vim'
+Plug 'godlygeek/tabular'
+Plug 'itchyny/lightline.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'luochen1990/rainbow'
+Plug 'mileszs/ack.vim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'raimondi/delimitmate'
+Plug 'scrooloose/nerdtree'
+Plug 'Shougo/neocomplete.vim'
+Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'luochen1990/rainbow'
-Plugin 'mileszs/ack.vim'
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'raimondi/delimitmate'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-
-call vundle#end()
+call plug#end()
 
 set t_cl=
 
