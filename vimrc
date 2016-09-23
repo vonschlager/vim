@@ -7,7 +7,6 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'gmarik/Vundle.vim'
 Plug 'godlygeek/tabular'
-Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'luochen1990/rainbow'
 Plug 'mileszs/ack.vim'
@@ -22,6 +21,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -138,12 +139,24 @@ let g:vdebug_options["ide_key"] = 'XDEBUG_VIM'
 "Ack
 let g:ackprg = 'ag --vimgrep'
 
-" lightline
-let g:lightline = {
-            \ 'colorscheme': 'solarized'
-            \ }
-
 " minibufexpl
 let g:miniBufExplVSplit=20
 let g:miniBufExplorerAutoStart=0
 
+" airline
+let g:airline_extensions = ['branch', 'tabline']
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '^V' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '^S' : 'S',
+            \ }
