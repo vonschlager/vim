@@ -27,6 +27,7 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 set t_cl=
+set t_Co=256
 
 filetype plugin indent on
 
