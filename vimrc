@@ -113,6 +113,7 @@ let mapleader="\<Space>"
 nmap <Leader>w :w<CR>
 nmap <Leader>q :qall<CR>
 nmap <Leader>b :MBEToggle<CR>
+nmap <Leader>t :NERDTreeToggle<CR>
 
 nmap <Leader>p "+p
 nmap <Leader>P "+P
